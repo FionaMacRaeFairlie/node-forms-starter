@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Forms in Node.js</title>
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+</head>
+<body>
+  <div class="form-header">
+    <h2>Send us a message</h2> 
+{{#errors}}
+      <h2 class="errors-heading">Oops, please correct the following:</h2>
+      <div class="errors-list">
+          <p>{{message.msg}}</p>
+          <p>{{email.msg}}</p>
+      </div>
+ {{/errors}}
+ {{^errors}}
+      
+ {{/errors}}
+ 
+ 
+  </div>
+  
+  <form method="post" action="/contact" novalidate>
+    <div class="form-field">
+      <label for="message">Message</label>
+      <textarea class="input" id="message" name="message" rows="4" autofocus>{{data.message}}</textarea>
+      {{#errors}}
+        <div class="error">{{message.msg}}</div>
+     {{/errors}}
+    </div>
+    <div class="form-field">
+      <label for="email">Email</label>
+      <input class="input" id="email" name="email" type="email" value="{{data.email}}"/>
+         {{#errors}}
+        <div class="error">{{email.msg}}</div>
+     {{/errors}}
+    </div>
+    <div class="form-actions">
+      <button class="btn" type="submit">Send</button>
+    </div>
+  </form>
+
+</body>
+</html>
